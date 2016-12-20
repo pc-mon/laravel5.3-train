@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
+    <link href="{{ url('css/app.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -48,6 +48,12 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{{ url('/book') }}">Book</a></li>
+                        @if(isset($pages))
+                            @foreach($pages as $page)
+                                <li><a href="{{ url('/page/'.$page->id) }}">{{ $page->title }}</a></li>
+                            @endforeach
+                        @endif
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li><a href="{{ url('/login') }}">Login</a></li>
@@ -82,6 +88,6 @@
     </div>
 
     <!-- Scripts -->
-    <script src="/js/app.js"></script>
+    <script src="{{ url('js/app.js') }}"></script>
 </body>
 </html>
