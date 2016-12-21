@@ -48,7 +48,10 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="{{ url('/book') }}">Book</a></li>
+                        <!--
+                            <li><a href="{{ url('/local/'.trans('app.op.lang')) }}">{{ trans('app.op.flang') }}</a></li>
+                        -->
+                        <li><a href="{{ url('/book') }}">{{ trans('app.book') }}</a></li>
                         @if(isset($pages))
                             @foreach($pages as $page)
                                 <li><a href="{{ url('/page/'.$page->id) }}">{{ $page->title }}</a></li>
@@ -56,8 +59,8 @@
                         @endif
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ url('/login') }}">Login</a></li>
-                            <li><a href="{{ url('/register') }}">Register</a></li>
+                            <li><a href="{{ url('/login') }}">{{ trans('app.login') }}</a></li>
+                            <li><a href="{{ url('/register') }}">{{ trans('app.register') }}</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -69,7 +72,7 @@
                                         <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
+                                            {{ trans('app.logout') }}
                                         </a>
 
                                         <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">

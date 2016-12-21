@@ -32,3 +32,9 @@ Route::resource('admin/cost', 'Admin\\CostController');
 Route::resource('admin/pages/pages', 'Admin\\PagesController');
 Route::resource('admin/passengers/passengers', 'Admin\\PassengersController');
 Route::resource('admin/tickets/tickets', 'Admin\\TicketsController');
+
+Route::get('/local/{locale}',function($locale){
+    App::setLocale($locale);
+    session()->put('locale' , $locale);
+    return redirect()->back();
+});
